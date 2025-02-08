@@ -18,7 +18,9 @@ public class JobApplicationService {
     }
 
     public JobApplication addApplication(JobApplication application) {
-        return jobApplicationRepository.save(application);
+        JobApplication savedApplication = jobApplicationRepository.save(application);
+        kafkaProducerService.sendNotification("New application added: " + savedApplication.getJobTitle());
+        return savedApplication;
     }
 
     public List<JobApplication> getApplicationsByUserId(String userId) {
