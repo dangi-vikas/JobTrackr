@@ -3,9 +3,11 @@ package com.jobtrackr_server.service;
 import com.jobtrackr_server.model.JobApplication;
 import com.jobtrackr_server.repository.JobApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class JobApplicationService {
     @Autowired
     private JobApplicationRepository jobApplicationRepository;
@@ -28,6 +30,6 @@ public class JobApplicationService {
     }
 
     public List<JobApplication> getApplicationsByStatus(String status) {
-        return jobApplicationRepository.findByStatus(status);
+        return jobApplicationRepository.findByStatusIgnoreCase(status);
     }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface JobApplicationRepository extends MongoRepository<JobApplication, String> {
     List<JobApplication> findByUserId(String userId);
-    List<JobApplication> findByStatus(String status);
+    List<JobApplication> findByStatusIgnoreCase(String status);
 }
