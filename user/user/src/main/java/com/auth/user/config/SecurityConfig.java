@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -29,9 +28,8 @@ public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
             "/swagger-resources/**",
             "/swagger-ui.html",
-            "/swagger-ui/index.html",
-            "/v2/api-docs",
-            "/webjars/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
             "/api/v1/users/authenticate",
             "/api/v1/users/register",
             "/api/v1/users/logout"
