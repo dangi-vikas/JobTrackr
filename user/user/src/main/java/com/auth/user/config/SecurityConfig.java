@@ -32,7 +32,8 @@ public class SecurityConfig {
             "/v3/api-docs/**",
             "/api/v1/users/authenticate",
             "/api/v1/users/register",
-            "/api/v1/users/logout"
+            "/api/v1/users/logout",
+            "/api/v1/users/{username}"
     };
 
     @Bean

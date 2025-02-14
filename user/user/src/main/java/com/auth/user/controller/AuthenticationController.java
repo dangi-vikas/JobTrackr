@@ -47,4 +47,17 @@ public class AuthenticationController {
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         return ResponseEntity.ok(userDetailsService.save(user));
     }
+
+    @GetMapping("/{username}")
+    @Operation(summary = "User Details", description = "Provides the details for a given username")
+    @ApiResponse(responseCode = "200", description = "Successfully fetched user details!")
+    public ResponseEntity<?> getUserDetails(@PathVariable String username) {
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+        User user = new User();
+        user.setUsername(userDetails.getUsername());
+        user.setEmail("test@example.com");
+
+        return ResponseEntity.ok(user);
+    }
 }
