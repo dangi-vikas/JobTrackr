@@ -26,10 +26,10 @@ class AnalyticsServiceTest {
 
     @Test
     void testGetApplicationStatusCount() {
-        when(repository.countByStatus("Applied")).thenReturn(10L);
-        when(repository.countByStatus("Interviewed")).thenReturn(5L);
-        when(repository.countByStatus("Rejected")).thenReturn(3L);
-        when(repository.countByStatus("Offered")).thenReturn(2L);
+        when(repository.countByStatusIgnoreCase("Applied")).thenReturn(10L);
+        when(repository.countByStatusIgnoreCase("Interviewed")).thenReturn(5L);
+        when(repository.countByStatusIgnoreCase("Rejected")).thenReturn(3L);
+        when(repository.countByStatusIgnoreCase("Offered")).thenReturn(2L);
 
         Map<String, Long> statusCount = analyticsService.getApplicationStatusCount();
 
@@ -38,9 +38,9 @@ class AnalyticsServiceTest {
         assertEquals(3L, statusCount.get("Rejected"));
         assertEquals(2L, statusCount.get("Offered"));
 
-        verify(repository, times(1)).countByStatus("Applied");
-        verify(repository, times(1)).countByStatus("Interviewed");
-        verify(repository, times(1)).countByStatus("Rejected");
-        verify(repository, times(1)).countByStatus("Offered");
+        verify(repository, times(1)).countByStatusIgnoreCase("Applied");
+        verify(repository, times(1)).countByStatusIgnoreCase("Interviewed");
+        verify(repository, times(1)).countByStatusIgnoreCase("Rejected");
+        verify(repository, times(1)).countByStatusIgnoreCase("Offered");
     }
 }

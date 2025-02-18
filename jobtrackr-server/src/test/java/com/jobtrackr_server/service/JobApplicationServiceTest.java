@@ -97,12 +97,12 @@ class JobApplicationServiceTest {
         application2.setStatus("Applied");
         application2.setJobTitle("Data Scientist");
 
-        when(repository.findByStatus("Applied")).thenReturn(Arrays.asList(application1, application2));
+        when(repository.findByStatusIgnoreCase("Applied")).thenReturn(Arrays.asList(application1, application2));
 
         List<JobApplication> applications = service.getApplicationsByStatus("Applied");
 
         assertEquals(2, applications.size());
-        verify(repository, times(1)).findByStatus("Applied");
+        verify(repository, times(1)).findByStatusIgnoreCase("Applied");
     }
 
     @Test
